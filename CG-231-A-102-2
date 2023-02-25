@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Titulo</title>
+        <style>
+            html, body { margin: 0; padding: 0; overflow: hidden; }
+            #text {
+                position: absolute;
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+                color: #f851ea;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="text">TRANSFORMACIONES<br/>
+            NATALIA MONTAÑO<br/>
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r94/three.min.js"></script>
+    <script>
+   
+    function cubo1(lado, color){
+        //CARA 1 DEL CUADRADO DEL CUADRADO
+        GeometriaCuad1=new THREE.Geometry();
+        var vertices = [[0,0,0],[0,lado,0],[lado,lado,0],[lado,0,0],[0,0,0]]; 
+        var largVerti = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            GeometriaCuad1.vertices.push(vector); 
+        }
+        //CARA 2 DEL CUADRADO DEL CUADRADO
+        GeometriaCuad2=new THREE.Geometry(); 
+        var vertices = [[0,0,0],[0,lado,0],[lado,lado,0],[lado,0,0],[0,0,0]];  
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            GeometriaCuad2.vertices.push(vector); 
+        }
+        //LINEA 1
+        Geometrialin1=new THREE.Geometry(); 
+        var vertices = [[0,0,0],[0,0,lado]];  
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin1.vertices.push(vector); 
+        }
+        //LINEA 2
+        Geometrialin2=new THREE.Geometry(); 
+        var vertices = [[0,lado,lado],[0,lado,0]];  
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin2.vertices.push(vector); 
+        }
+        //LINEA 3
+        Geometrialin3=new THREE.Geometry(); 
+        var vertices = [[lado,lado,lado],[lado,lado,0]];  
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin3.vertices.push(vector); 
+        }
+        //LINEA 4
+        Geometrialin4=new THREE.Geometry(); 
+        var vertices = [[lado,0,lado],[lado,0,0]]; 
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin4.vertices.push(vector); 
+        }
+    
+        Cuadrado1 = new THREE.Line(GeometriaCuad1,color);
+        Cuadrado2 = new THREE.Line(GeometriaCuad2,color); 
+        linea1 = new THREE.Line(Geometrialin1,color);
+        linea2 = new THREE.Line(Geometrialin2,color);
+        linea3 = new THREE.Line(Geometrialin3,color);
+        linea4 = new THREE.Line(Geometrialin4,color);
+    
+        // Matriz de Traslación
+        var matrizT = new THREE.Matrix4(); 
+        matrizT.set(1, 0, 0, 0,
+                    0, 1, 0, 0,
+                    0, 0, 1, lado,
+                    0, 0, 0, 1);
+
+                Cuadrado2.applyMatrix(matrizT);
+        //Agregar a ESCENA 
+        scene.add(Cuadrado1);
+        scene.add(Cuadrado2);
+        scene.add(linea1);
+        scene.add(linea2);
+        scene.add(linea3);
+        scene.add(linea4);
+
+    }
+    
+    function cubo2(lado, color){
+        //CARA 1 DEL CUADRADO DEL CUADRADO
+        GeometriaCuad1=new THREE.Geometry();
+        var vertices = [[0,0,0],[0,lado,0],[lado,lado,0],[lado,0,0],[0,0,0]]; 
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            GeometriaCuad1.vertices.push(vector); 
+        }
+        //CARA 2 DEL CUADRADO DEL CUADRADO
+        GeometriaCuad2=new THREE.Geometry(); 
+        var vertices = [[0,0,0],[0,lado,0],[lado,lado,0],[lado,0,0],[0,0,0]]; 
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            GeometriaCuad2.vertices.push(vector); 
+        }
+        //LINEA 1
+        Geometrialin1=new THREE.Geometry(); 
+        var vertices = [[0,0,0],[0,0,lado]]; 
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin1.vertices.push(vector); 
+        }
+        //LINEA 2
+        Geometrialin2=new THREE.Geometry(); 
+        var vertices = [[0,lado,lado],[0,lado,0]]; 
+        var largoVert = vertices.length;
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin2.vertices.push(vector); 
+        }
+        //LINEA 3
+        Geometrialin3=new THREE.Geometry(); 
+        var vertices = [[lado,lado,lado],[lado,lado,0]]; 
+        var largoVert = vertices.length; 
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin3.vertices.push(vector); 
+        }
+        //LINEA 4
+        Geometrialin4=new THREE.Geometry(); 
+        var vertices = [[lado,0,lado],[lado,0,0]]; 
+        var largoVert = vertices.length;
+        for (i = 0; i < largoVert; i++) {
+            x = vertices[i][0];
+            y = vertices[i][1];
+            z = vertices[i][2];
+            vector = new THREE.Vector3(x, y, z);
+            Geometrialin4.vertices.push(vector);
+        }
+        
+        Cuadrado1 = new THREE.Line(GeometriaCuad1,color);
+        this.getCuadrado= function(){
+            return Cuadrado1
+        }
+        Cuadrado2 = new THREE.Line(GeometriaCuad2,color); 
+        this.getCuadrado2= function(){
+            return Cuadrado2
+        }
+        linea1 = new THREE.Line(Geometrialin1,color);
+        this.getLinea1= function(){
+            return  linea1;
+        }
+        linea2 = new THREE.Line(Geometrialin2,color);
+        this.getLinea2= function(){
+            return linea2;
+        }
+        linea3 = new THREE.Line(Geometrialin3,color);
+        this.getLinea3= function(){
+            return linea3;
+        }
+        linea4 = new THREE.Line(Geometrialin4,color);
+        this.getLinea4= function(){
+            return linea4;
+        }
+    
+        // MATRIZ DE TRANSLACION
+        var matrizT = new THREE.Matrix4();  
+        matrizT.set(1, 0, 0, 0,
+                    0, 1, 0, 0,
+                    0, 0, 1, lado,
+                    0, 0, 0, 1);
+
+                Cuadrado2.applyMatrix(matrizT);
+       
+    }
+    function Cubo(x, y,z){ 
+        cubo2(35, Material2);
+        //CARA 1 DEL CUADRADO DEL CUADRADO
+        var matrizT = new THREE.Matrix4();  
+        matrizT.set(1, 0, 0, x,
+                    0, 1, 0, y,
+                    0, 0, 1, z,
+                    0, 0, 0, 1);
+
+                getCuadrado().applyMatrix(matrizT);
+        
+        //CARA 2 DEL CUADRADO DEL CUADRADO
+        var matrizT = new THREE.Matrix4();  
+        matrizT.set(1, 0, 0, x,
+                    0, 1, 0, y,
+                    0, 0, 1, z,
+                    0, 0, 0, 1);
+
+                getCuadrado2().applyMatrix(matrizT);
+        //LINEA 1
+        var matrizT = new THREE.Matrix4();  
+        matrizT.set(1, 0, 0, x,
+                    0, 1, 0, y,
+                    0, 0, 1, z,
+                    0, 0, 0, 1);
+
+                getLinea1().applyMatrix(matrizT);
+
+        //LINEA 2
+        var matrizT = new THREE.Matrix4();  
+        matrizT.set(1, 0, 0, x,
+                    0, 1, 0, y,
+                    0, 0, 1, z,
+                    0, 0, 0, 1);
+
+                getLinea2().applyMatrix(matrizT); 
+        
+        //LINEA 3
+        var matrizT = new THREE.Matrix4(); 
+        matrizT.set(1, 0, 0, x,
+                    0, 1, 0, y,
+                    0, 0, 1, z,
+                    0, 0, 0, 1);
+
+                getLinea3().applyMatrix(matrizT); 
+        
+         //LINEA 4
+         var matrizT = new THREE.Matrix4(); 
+        matrizT.set(1, 0, 0, x,
+                    0, 1, 0, y,
+                    0, 0, 1, z,
+                    0, 0, 0, 1);
+
+                getLinea4().applyMatrix(matrizT); 
+        
+        
+        scene.add(getCuadrado());
+        scene.add(getCuadrado2());
+        scene.add(getLinea1());
+        scene.add(getLinea2());
+        scene.add(getLinea3());
+        scene.add(getLinea4());
+    }
+    function escala(x,y,z){
+        cubo2(35, Material3);
+        //CARA 1 DEL CUADRADO DEL CUADRADO
+        var matrizS = new THREE.Matrix4(); 
+        matrizS.set(x, 0, 0, 0,
+                    0, y, 0, 0,
+                    0, 0, z, 0,
+                    0, 0, 0, 1);
+
+                    getCuadrado().applyMatrix(matrizS);
+        
+        //CARA 2 DEL CUADRADO DEL CUADRADO
+        var matrizS = new THREE.Matrix4(); 
+        matrizS.set(x, 0, 0, 0,
+                    0, y, 0, 0,
+                    0, 0, z, 0,
+                    0, 0, 0, 1);
+
+                    getCuadrado2().applyMatrix(matrizS);
+
+        //LINEA 1
+        var matrizS = new THREE.Matrix4(); 
+        matrizS.set(x, 0, 0, 0,
+                    0, y, 0, 0,
+                    0, 0, z, 0,
+                    0, 0, 0, 1);
+
+                    getLinea1().applyMatrix(matrizS);
+                
+        //LINEA 2
+        var matrizS = new THREE.Matrix4(); 
+        matrizS.set(x, 0, 0, 0,
+                    0, y, 0, 0,
+                    0, 0, z, 0,
+                    0, 0, 0, 1);
+
+                    getLinea2().applyMatrix(matrizS);
+
+        //LINEA 3
+        var matrizS = new THREE.Matrix4(); 
+        matrizS.set(x, 0, 0, 0,
+                    0, y, 0, 0,
+                    0, 0, z, 0,
+                    0, 0, 0, 1);
+
+                    getLinea3().applyMatrix(matrizS);
+
+        //LINEA 4
+        var matrizS = new THREE.Matrix4(); 
+        matrizS.set(x, 0, 0, 0,
+                    0, y, 0, 0,
+                    0, 0, z, 0,
+                    0, 0, 0, 1);
+
+                    getLinea4().applyMatrix(matrizS);
+                    
+        //AGREGAR A LA ESCENA MATRIZ DE TRANSLACION
+        scene.add(getCuadrado());
+        scene.add(getCuadrado2());
+        scene.add(getLinea1());
+        scene.add(getLinea2());
+        scene.add(getLinea3());
+        scene.add(getLinea4());
+    }
+
+    function rotacion(alpha)
+    {
+        cubo2(35, Material4);
+        //CARA 1 DEL CUADRADO
+        var matrizR = new THREE.Matrix4();
+		var cs = Math.cos(alpha);
+		var ss = Math.sin(alpha);
+
+		matrizR.set(cs,  0, ss, 0,
+        		0, 1, 0, 0, 
+				-ss, 0, cs, 0,
+				0, 0, 0, 1);	
+
+                getCuadrado().applyMatrix(matrizR);
+
+        //CARA 2 DEL CUADRADO
+        var matrizR = new THREE.Matrix4();
+		var cs = Math.cos(alpha);
+		var ss = Math.sin(alpha);
+
+		matrizR.set(cs,  0, ss, 0,
+        		0, 1, 0, 0, 
+				-ss, 0, cs, 0,
+				0, 0, 0, 1);	
+
+                getCuadrado2().applyMatrix(matrizR);
+        //LINEA 1
+        var matrizR = new THREE.Matrix4();
+		var cs = Math.cos(alpha);
+		var ss = Math.sin(alpha);
+
+		matrizR.set(cs,  0, ss, 0,
+        		0, 1, 0, 0, 
+				-ss, 0, cs, 0,
+				0, 0, 0, 1);	
+
+                getLinea1().applyMatrix(matrizR);
+
+        //LINEA 2
+        var matrizR = new THREE.Matrix4();
+		var cs = Math.cos(alpha);
+		var ss = Math.sin(alpha);
+
+		matrizR.set(cs,  0, ss, 0,
+        		0, 1, 0, 0, 
+				-ss, 0, cs, 0,
+				0, 0, 0, 1);	
+
+                getLinea2().applyMatrix(matrizR);
+
+        //LINEA 3
+        var matrizR = new THREE.Matrix4();
+		var cs = Math.cos(alpha);
+		var ss = Math.sin(alpha);
+
+		matrizR.set(cs,  0, ss, 0,
+        		0, 1, 0, 0, 
+				-ss, 0, cs, 0,
+				0, 0, 0, 1);	
+
+                getLinea3().applyMatrix(matrizR);
+        
+        //LINEA 4
+        var matrizR = new THREE.Matrix4();
+        var alpha = 45;
+		var cs = Math.cos(alpha);
+		var ss = Math.sin(alpha);
+
+		matrizR.set(cs,  0, ss, 0,
+        		0, 1, 0, 0, 
+				-ss, 0, cs, 0,
+				0, 0, 0, 1);	
+
+                getLinea4().applyMatrix(matrizR);
+
+                scene.add(getCuadrado());
+
+        scene.add(getCuadrado2());
+        scene.add(getLinea1());
+        scene.add(getLinea2());
+        scene.add(getLinea3());
+        scene.add(getLinea4());
+    }
+
+    function ventana() { //FUNCION PARA EJECUTAR
+
+        // ESCENA
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);    
+        renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor(0x000000, 1.0);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        var size = 700;
+        var arrowSize = 40;
+        var divisions = 20; 
+        var origin = new THREE.Vector3( 0, 0, 0 );
+        var x = new THREE.Vector3( 1, 0, 0 );
+        var y = new THREE.Vector3( 0, 1, 0 );
+        var z = new THREE.Vector3( 0, 0, 1 );
+        var color2 = new THREE.Color( 0x333333 );  
+        var colorR = new THREE.Color( 0xAA0000 ); 
+        var colorG = new THREE.Color( 0x00AA00 );
+        var colorB = new THREE.Color( 0x0000AA );
+
+        //CREACION DE REJILLA
+        var gridHelperXZ = new THREE.GridHelper( size, divisions, color2, color2);
+        //FLECHAS
+        var arrowX = new THREE.ArrowHelper( x, origin, arrowSize, colorR );              
+        var arrowY = new THREE.ArrowHelper( y, origin, arrowSize, colorG );
+        var arrowZ = new THREE.ArrowHelper( z, origin, arrowSize, colorB );
+			
+        //CAMARA
+        camera.position.x = 200;
+        camera.position.y = 200;
+        camera.position.z = 400;
+        // ENFOQUE ESCENA 
+        camera.lookAt(scene.position);
+
+        //ASIGNACION DE MATERIAL 
+        Material1=new THREE.ParticleBasicMaterial({color:0xff00c8}); 
+        Material2=new THREE.ParticleBasicMaterial({color:0xffd500});
+        Material3=new THREE.ParticleBasicMaterial({color:0x0050ff});
+        Material4=new THREE.ParticleBasicMaterial({color:0x00ff00});
+
+        //CREACION DE LOS CUBOS
+        //CUBO AMARILLO
+        Cubo(60, 20,0);
+        //CUBO AZUL
+        escala(2.5,2.5,2.5); 
+        //CUBO VERDE 
+        rotacion(45); 
+
+        
+        document.body.appendChild(renderer.domElement); //RENDER
+
+        // ESCENARIO
+        scene.add(gridHelperXZ);
+	    scene.add(arrowX);	
+		scene.add(arrowY);	
+		scene.add(arrowZ);
+        
+    
+
+        renderer.render(scene, camera);
+    }
+
+    ventana();  // otra forma: window.onload = ventana;
+
+    </script>
+  </body>
+</html>
